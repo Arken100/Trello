@@ -21,6 +21,7 @@ namespace PowTrello.Controllers
             return View(db.Board.ToList());
         }
 
+        [Authorize]
         // GET: Boards/Details/5
         public ActionResult Details(int? id)
         {

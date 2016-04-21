@@ -21,7 +21,7 @@ namespace PowTrello.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("TrelloConnectionString", throwIfV1Schema: false)
         {
         }
 
