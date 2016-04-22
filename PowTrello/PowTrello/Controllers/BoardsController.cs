@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PowTrello.DAL;
 using PowTrello.Models;
+using Microsoft.AspNet.Identity;
 
 namespace PowTrello.Controllers
 {
@@ -15,13 +16,22 @@ namespace PowTrello.Controllers
     {
         private DTContext db = new DTContext();
 
+
+        private ApplicationUser GetUser()
+        {
+            ApplicationUser _user = new ApplicationUser();
+            string userId= User.Identity.GetUserId();
+
+            return db.ApplicationUsers.FirstOrDefault(x => x.Id == userId);
+        }
+
+
         // GET: Boards
         public ActionResult Index()
         {
             return View(db.Board.ToList());
         }
 
-        [Authorize]
         // GET: Boards/Details/5
         public ActionResult Details(int? id)
         {
@@ -50,6 +60,8 @@ namespace PowTrello.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Description")] Board board)
         {
+            board.User = GetUser();
+
             if (ModelState.IsValid)
             {
                 db.Board.Add(board);
