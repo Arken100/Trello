@@ -6,14 +6,13 @@ using System.Web;
 
 namespace PowTrello.Models
 {
-    public class Board : Base
+    public class Comment : Base
     {
-        public string Title { get; set; }
         public string Description { get; set; }
 
-        public virtual Team Team { get; set; }
-        public virtual ICollection<ColumnBoard> ColumnBoards { get; set; }
+        public virtual TrelloTask TrelloTask { get; set; }
+
     }
+
+
 }
-
-
