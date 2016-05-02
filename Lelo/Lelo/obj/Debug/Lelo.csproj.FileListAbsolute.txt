@@ -1,0 +1,207 @@
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\csc.exe
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\System.Collections.Immutable.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\vbc.exe
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\VBCSCompiler.exe
+D:\Projects\PowLelo\Lelo\Lelo\bin\roslyn\VBCSCompiler.exe.config
+D:\Projects\PowLelo\Lelo\Lelo\bin\Lelo.dll.config
+D:\Projects\PowLelo\Lelo\Lelo\bin\Lelo.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Lelo.pdb
+D:\Projects\PowLelo\Lelo\Lelo\bin\Antlr3.Runtime.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\EntityFramework.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\EntityFramework.SqlServer.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Google.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Newtonsoft.Json.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Owin.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Helpers.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Mvc.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Optimization.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Razor.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.Razor.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\WebGrease.dll
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Helpers.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Mvc.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Optimization.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.Razor.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\System.Web.WebPages.Razor.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Antlr3.Runtime.pdb
+D:\Projects\PowLelo\Lelo\Lelo\bin\Newtonsoft.Json.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\EntityFramework.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\EntityFramework.SqlServer.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Google.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Projects\PowLelo\Lelo\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Projects\PowLelo\Lelo\Lelo\obj\Debug\Lelo.csprojResolveAssemblyReference.cache
+D:\Projects\PowLelo\Lelo\Lelo\obj\Debug\Lelo.dll
+D:\Projects\PowLelo\Lelo\Lelo\obj\Debug\Lelo.pdb
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\obj\Debug\Lelo.csprojResolveAssemblyReference.cache
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\obj\Debug\Lelo.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\obj\Debug\Lelo.pdb
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\csc.exe
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\System.Collections.Immutable.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\vbc.exe
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\VBCSCompiler.exe
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\roslyn\VBCSCompiler.exe.config
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Lelo.dll.config
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Lelo.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Lelo.pdb
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Antlr3.Runtime.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\EntityFramework.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\EntityFramework.SqlServer.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Google.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Newtonsoft.Json.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Owin.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Helpers.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Mvc.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Optimization.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Razor.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.Razor.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\WebGrease.dll
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Helpers.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Mvc.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Optimization.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.Razor.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\System.Web.WebPages.Razor.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Antlr3.Runtime.pdb
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Newtonsoft.Json.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\EntityFramework.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\EntityFramework.SqlServer.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Google.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Projects\PowLelo\Lelo — kopia — kopia\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\csc.exe
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\System.Collections.Immutable.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\vbc.exe
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\VBCSCompiler.exe
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\roslyn\VBCSCompiler.exe.config
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Lelo.dll.config
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Lelo.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Lelo.pdb
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Antlr3.Runtime.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\EntityFramework.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\EntityFramework.SqlServer.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Google.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Newtonsoft.Json.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Owin.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Helpers.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Mvc.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Optimization.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Razor.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.Razor.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\WebGrease.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Helpers.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Mvc.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Optimization.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.Razor.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\System.Web.WebPages.Razor.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Antlr3.Runtime.pdb
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Newtonsoft.Json.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\EntityFramework.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\EntityFramework.SqlServer.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Google.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\obj\Debug\Lelo.csprojResolveAssemblyReference.cache
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\obj\Debug\Lelo.dll
+D:\Projects\PowLelo\LeloDobrzeSieZaczyna\Lelo\obj\Debug\Lelo.pdb
