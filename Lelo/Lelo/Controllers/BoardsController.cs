@@ -8,17 +8,39 @@ using System.Web;
 using System.Web.Mvc;
 using Lelo.DAL;
 using Lelo.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Lelo.Controllers
 {
     public class BoardsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private Guid CurrentUserId;
+        private ApplicationUser CurrentUser;
+        
+
+       public BoardsController()
+        {
+            
+            CurrentUserId = User != null ?  new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            CurrentUser = CurrentUserId != Guid.Empty ? db.Users.First(x => x.Id == CurrentUserId) : null;
+        }
+
+        public Guid GetCurrentUserId()
+        {
+            var toReturn = CurrentUserId = User != null ?  new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            return toReturn;
+        }
+
+
+
 
         // GET: Boards
         public ActionResult Index()
         {
-            var boards = db.Boards.Include(b => b.Team).Include(b => b.User);
+
+            var uid = GetCurrentUserId();
+            var boards = db.Boards.Include(b => b.Team).Include(b => b.User).Where(x => x.UserId == uid || x.Team.Users.Contains(CurrentUser));
             return View(boards.ToList());
         }
 

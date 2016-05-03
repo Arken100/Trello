@@ -7,6 +7,6 @@ namespace Lelo.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<Board> Boards { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }
