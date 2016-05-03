@@ -1,6 +1,7 @@
 ﻿using Lelo.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -13,9 +14,11 @@ namespace Lelo.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
+        [ForeignKey("Board")]
+        public int? BoardId { get; set; }
 
-        public Guid BoardId { get; set; }
         public Board Board { get; set; }
+
         public virtual ICollection<LeloTask> LeloTasks { get; set; }
 
       

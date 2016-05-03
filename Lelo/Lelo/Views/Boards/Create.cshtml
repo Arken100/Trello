@@ -42,9 +42,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TeamId, "TeamId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TeamId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TeamId", null, "-- brak --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TeamId, "", new { @class = "text-danger" })
             </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Dodaj Team", "Create", "Teams", null, new { target="_blank"})
         </div>
 
         <div class="form-group">

@@ -18,7 +18,8 @@ namespace Lelo.Controllers
         // GET: TaskLists
         public ActionResult Index()
         {
-            return View(db.TaskLists.ToList());
+            var taskLists = db.TaskLists.Include(t => t.Board);
+            return View(taskLists.ToList());
         }
 
         // GET: TaskLists/Details/5
@@ -39,6 +40,7 @@ namespace Lelo.Controllers
         // GET: TaskLists/Create
         public ActionResult Create()
         {
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace Lelo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,BoardID")] TaskList taskList)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,BoardId")] TaskList taskList)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace Lelo.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title", taskList.BoardId);
             return View(taskList);
         }
 
@@ -71,6 +74,7 @@ namespace Lelo.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title", taskList.BoardId);
             return View(taskList);
         }
 
@@ -79,7 +83,7 @@ namespace Lelo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,BoardID")] TaskList taskList)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,BoardId")] TaskList taskList)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace Lelo.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title", taskList.BoardId);
             return View(taskList);
         }
 

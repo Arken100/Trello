@@ -9,7 +9,7 @@ namespace Lelo.Models
 
 
 
-        public int TaskListId { get; set; }
+        public int? TaskListId { get; set; }
 
 
         public TaskList TaskList { get; set; }
