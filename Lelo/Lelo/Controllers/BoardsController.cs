@@ -17,20 +17,27 @@ namespace Lelo.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private Guid CurrentUserId;
         private ApplicationUser CurrentUser;
-        
 
-       public BoardsController()
+
+        public BoardsController()
         {
-            
-            CurrentUserId = User != null ?  new Guid(User.Identity.GetUserId()) : Guid.Empty;
+
+            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
             CurrentUser = CurrentUserId != Guid.Empty ? db.Users.First(x => x.Id == CurrentUserId) : null;
         }
 
         public Guid GetCurrentUserId()
         {
-            var toReturn = CurrentUserId = User != null ?  new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            var toReturn = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
             return toReturn;
         }
+
+        public void SetCurrentUser()
+        {
+            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            CurrentUser = db.Users.First(x => x.Id == CurrentUserId);
+        }
+
 
 
 
@@ -38,9 +45,19 @@ namespace Lelo.Controllers
         // GET: Boards
         public ActionResult Index()
         {
+            SetCurrentUser();
 
-            var uid = GetCurrentUserId();
-            var boards = db.Boards.Include(b => b.Team).Include(b => b.User).Where(x => x.UserId == uid || x.Team.Users.Contains(CurrentUser));
+            var boards = db.Boards.Include(b => b.Team).Include(b => b.User);
+
+
+            //Jeżeli nie Admin - filtruj po user    
+            if (!User.IsInRole("Admin"))
+            {
+                var uid = GetCurrentUserId();
+                boards = boards.Where(x => x.UserId == uid || x.Team.Users.Select(xx=> xx.Id).Contains(CurrentUserId));
+                return View(boards.ToList());
+            }
+
             return View(boards.ToList());
         }
 
