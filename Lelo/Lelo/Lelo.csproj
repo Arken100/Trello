@@ -170,7 +170,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeloTasksController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TaskListsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DAL\ConfigurationDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +246,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\LeloTasks\Create.cshtml" />
+    <Content Include="Views\LeloTasks\Delete.cshtml" />
+    <Content Include="Views\LeloTasks\Details.cshtml" />
+    <Content Include="Views\LeloTasks\Edit.cshtml" />
+    <Content Include="Views\LeloTasks\Index.cshtml" />
+    <Content Include="Views\TaskLists\Create.cshtml" />
+    <Content Include="Views\TaskLists\Delete.cshtml" />
+    <Content Include="Views\TaskLists\Details.cshtml" />
+    <Content Include="Views\TaskLists\Edit.cshtml" />
+    <Content Include="Views\TaskLists\Index.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Delete.cshtml" />
+    <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Boards\Create.cshtml" />
     <Content Include="Views\Boards\Delete.cshtml" />
     <Content Include="Views\Boards\Details.cshtml" />

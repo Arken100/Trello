@@ -8,130 +8,115 @@ using System.Web;
 using System.Web.Mvc;
 using Lelo.DAL;
 using Lelo.Models;
-using Microsoft.AspNet.Identity;
 
 namespace Lelo.Controllers
 {
-    public class BoardsController : Controller
+    public class LeloTasksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ApplicationUser GetCurrentUser()
-        {
-            var userId = new Guid(User.Identity.GetUserId());
-            var user = db.Users.FirstOrDefault(x => x.Id == userId);
-
-            return user;
-        }
-
-
-
-        // GET: Boards
+        // GET: LeloTasks
         public ActionResult Index()
         {
-            var boards = db.Boards.Include(b => b.Team).Include(b => b.User);
-            return View(boards.ToList());
+            var leloTasks = db.LeloTasks.Include(l => l.TaskList);
+            return View(leloTasks.ToList());
         }
 
-        // GET: Boards/Details/5
+        // GET: LeloTasks/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            if (leloTask == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(leloTask);
         }
 
-        // GET: Boards/Create
+        // GET: LeloTasks/Create
         public ActionResult Create()
         {
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
+            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name");
             return View();
         }
 
-        // POST: Boards/Create
+        // POST: LeloTasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,TaskListId")] LeloTask leloTask)
         {
             if (ModelState.IsValid)
             {
-                db.Boards.Add(board);
+                db.LeloTasks.Add(leloTask);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
+            return View(leloTask);
         }
 
-        // GET: Boards/Edit/5
+        // GET: LeloTasks/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            if (leloTask == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
+            return View(leloTask);
         }
 
-        // POST: Boards/Edit/5
+        // POST: LeloTasks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,TaskListId")] LeloTask leloTask)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(board).State = EntityState.Modified;
+                db.Entry(leloTask).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
+            return View(leloTask);
         }
 
-        // GET: Boards/Delete/5
+        // GET: LeloTasks/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            if (leloTask == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(leloTask);
         }
 
-        // POST: Boards/Delete/5
+        // POST: LeloTasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Board board = db.Boards.Find(id);
-            db.Boards.Remove(board);
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            db.LeloTasks.Remove(leloTask);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

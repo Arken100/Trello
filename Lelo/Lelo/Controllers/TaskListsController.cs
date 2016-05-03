@@ -8,130 +8,110 @@ using System.Web;
 using System.Web.Mvc;
 using Lelo.DAL;
 using Lelo.Models;
-using Microsoft.AspNet.Identity;
 
 namespace Lelo.Controllers
 {
-    public class BoardsController : Controller
+    public class TaskListsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ApplicationUser GetCurrentUser()
-        {
-            var userId = new Guid(User.Identity.GetUserId());
-            var user = db.Users.FirstOrDefault(x => x.Id == userId);
-
-            return user;
-        }
-
-
-
-        // GET: Boards
+        // GET: TaskLists
         public ActionResult Index()
         {
-            var boards = db.Boards.Include(b => b.Team).Include(b => b.User);
-            return View(boards.ToList());
+            return View(db.TaskLists.ToList());
         }
 
-        // GET: Boards/Details/5
+        // GET: TaskLists/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            TaskList taskList = db.TaskLists.Find(id);
+            if (taskList == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(taskList);
         }
 
-        // GET: Boards/Create
+        // GET: TaskLists/Create
         public ActionResult Create()
         {
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
-        // POST: Boards/Create
+        // POST: TaskLists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,BoardID")] TaskList taskList)
         {
             if (ModelState.IsValid)
             {
-                db.Boards.Add(board);
+                db.TaskLists.Add(taskList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            return View(taskList);
         }
 
-        // GET: Boards/Edit/5
+        // GET: TaskLists/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            TaskList taskList = db.TaskLists.Find(id);
+            if (taskList == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            return View(taskList);
         }
 
-        // POST: Boards/Edit/5
+        // POST: TaskLists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,BoardID")] TaskList taskList)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(board).State = EntityState.Modified;
+                db.Entry(taskList).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name", board.TeamId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", board.UserId);
-            return View(board);
+            return View(taskList);
         }
 
-        // GET: Boards/Delete/5
+        // GET: TaskLists/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.Boards.Find(id);
-            if (board == null)
+            TaskList taskList = db.TaskLists.Find(id);
+            if (taskList == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(taskList);
         }
 
-        // POST: Boards/Delete/5
+        // POST: TaskLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Board board = db.Boards.Find(id);
-            db.Boards.Remove(board);
+            TaskList taskList = db.TaskLists.Find(id);
+            db.TaskLists.Remove(taskList);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

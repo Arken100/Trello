@@ -5,34 +5,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System;
+using Lelo.DAL;
 
 namespace Lelo.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, Guid, UserLogin, UserRole, UserClaim>
-    {
-        public ApplicationDbContext() : base("DefaultConnection")
-        {
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
-
-        public DbSet<Board> Boards { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<LeloTask> LeloTasks { get; set; }
-        public DbSet<TaskList> TaskLists { get; set; }
-        public DbSet<Team> Teams { get; set; }
-
-
-    }
+   
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser<Guid, UserLogin, UserRole, UserClaim>
