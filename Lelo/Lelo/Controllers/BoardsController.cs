@@ -8,23 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using Lelo.DAL;
 using Lelo.Models;
-using Microsoft.AspNet.Identity;
 
 namespace Lelo.Controllers
 {
     public class BoardsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        public ApplicationUser GetCurrentUser()
-        {
-            var userId = new Guid(User.Identity.GetUserId());
-            var user = db.Users.FirstOrDefault(x => x.Id == userId);
-
-            return user;
-        }
-
-
 
         // GET: Boards
         public ActionResult Index()

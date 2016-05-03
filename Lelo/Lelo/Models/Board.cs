@@ -11,8 +11,10 @@ namespace Lelo.Models
         public string Title { get; set; }
         public string Description { get; set; }
 
+        [ForeignKey("User")]
         public Guid UserId { get; set; }
-        public int TeamId { get; set; }
+        [ForeignKey("Team")]
+        public int? TeamId { get; set; }
 
 
         public Team Team { get; set; }
