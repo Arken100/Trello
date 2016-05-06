@@ -202,6 +202,5 @@ D:\Projects\POW_Trello\Lelo\Lelo\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Projects\POW_Trello\Lelo\Lelo\bin\Microsoft.Owin.Security.Google.xml
 D:\Projects\POW_Trello\Lelo\Lelo\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\POW_Trello\Lelo\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Projects\POW_Trello\Lelo\Lelo\obj\Debug\Lelo.csprojResolveAssemblyReference.cache
 D:\Projects\POW_Trello\Lelo\Lelo\obj\Debug\Lelo.dll
 D:\Projects\POW_Trello\Lelo\Lelo\obj\Debug\Lelo.pdb

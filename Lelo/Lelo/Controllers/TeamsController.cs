@@ -18,7 +18,9 @@ namespace Lelo.Controllers
         // GET: Teams
         public ActionResult Index()
         {
-            return View(db.Teams.ToList());
+            var toReturn = db.Teams == null ? null : db.Teams.ToList();
+
+            return View(toReturn);
         }
 
         // GET: Teams/Details/5

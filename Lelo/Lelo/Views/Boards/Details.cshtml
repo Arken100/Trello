@@ -41,8 +41,29 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
     </dl>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nazwa listy</th><th>Zadania</th>
+            </tr>
+        </thead>
+        @foreach(var item in Model.TaskLists )
+        {<tr>
+            <td> @item.Name </td>
+        <td>
+            <ul>
+            @foreach( var item2 in item.LeloTasks)
+            {
+                <li>@Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item.Id}, null) </li>
+            }
+            </ul>
+
+        </td>
+        </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

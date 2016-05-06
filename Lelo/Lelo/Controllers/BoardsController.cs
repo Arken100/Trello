@@ -28,14 +28,14 @@ namespace Lelo.Controllers
 
         public Guid GetCurrentUserId()
         {
-            var toReturn = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            var toReturn = User != null ? new Guid(User.Identity.GetUserId() == null ? Guid.Empty.ToString() : User.Identity.GetUserId().ToString()) : Guid.Empty;
             return toReturn;
         }
 
         public void SetCurrentUser()
         {
-            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
-            CurrentUser = db.Users.First(x => x.Id == CurrentUserId);
+            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId() == null ? Guid.Empty.ToString() : User.Identity.GetUserId().ToString()  ) : Guid.Empty;
+            CurrentUser = CurrentUserId == Guid.Empty ? null : db.Users.First(x => x.Id == CurrentUserId);
         }
 
 
