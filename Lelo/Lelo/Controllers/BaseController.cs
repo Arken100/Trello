@@ -1,6 +1,7 @@
 ﻿using Lelo.DAL;
 using Lelo.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,14 @@ namespace Lelo.Controllers
         protected Guid CurrentUserId;
         protected ApplicationUser CurrentUser;
 
+        protected UserManager<ApplicationUser, Guid> UserManager;
+        protected RoleManager<Role, Guid> RoleManager;
+
+        protected BaseController()
+        {
+            UserManager = new UserManager<ApplicationUser, Guid>(new UserStore<ApplicationUser, Role, Guid, UserLogin, UserRole, UserClaim>(db));
+            RoleManager = new RoleManager<Role, Guid>(new RoleStore(db));
+        }
 
         public void BoardsController()
         {

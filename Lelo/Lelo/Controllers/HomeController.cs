@@ -47,8 +47,8 @@ namespace Lelo.Controllers
                 ApplicationUser userToCreate = new ApplicationUser();
                // var UserManager = new UserManager<ApplicationUser, Guid>(new UserStore(db));
 
-                var UserManager = new UserManager<ApplicationUser, Guid>(new UserStore<ApplicationUser, Role, Guid, UserLogin, UserRole, UserClaim>(db));
-                var RoleManager = new RoleManager<Role, Guid>(new RoleStore(db));
+                //var UserManager = new UserManager<ApplicationUser, Guid>(new UserStore<ApplicationUser, Role, Guid, UserLogin, UserRole, UserClaim>(db));
+                //var RoleManager = new RoleManager<Role, Guid>(new RoleStore(db));
 
                 userToCreate.UserName = userToCreate.Email = role.ToLower() + "@example.com";
 

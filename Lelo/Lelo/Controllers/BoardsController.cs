@@ -43,6 +43,7 @@ namespace Lelo.Controllers
 
 
         // GET: Boards
+        [Authorize(Roles ="Admin, LeloUser")]
         public ActionResult Index()
         {
             SetCurrentUser();
@@ -62,6 +63,7 @@ namespace Lelo.Controllers
         }
 
         // GET: Boards/Details/5
+        [Authorize(Roles = "Admin, LeloUser")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -77,6 +79,7 @@ namespace Lelo.Controllers
         }
 
         // GET: Boards/Create
+        [Authorize(Roles = "Admin, LeloUser")]
         public ActionResult Create()
         {
             ViewBag.TeamId = new SelectList(db.Teams, "Id", "Name");
@@ -89,6 +92,7 @@ namespace Lelo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, LeloUser")]
         public ActionResult Create([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
         {
             if (ModelState.IsValid)
@@ -104,6 +108,7 @@ namespace Lelo.Controllers
         }
 
         // GET: Boards/Edit/5
+        [Authorize(Roles = "Admin, LeloUser")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -123,6 +128,7 @@ namespace Lelo.Controllers
         // POST: Boards/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, LeloUser")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,UserId,TeamId")] Board board)
@@ -139,6 +145,7 @@ namespace Lelo.Controllers
         }
 
         // GET: Boards/Delete/5
+        [Authorize(Roles = "Admin, LeloUser")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -154,6 +161,7 @@ namespace Lelo.Controllers
         }
 
         // POST: Boards/Delete/5
+        [Authorize(Roles = "Admin, LeloUser")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
