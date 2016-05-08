@@ -12,35 +12,13 @@ using Microsoft.AspNet.Identity;
 
 namespace Lelo.Controllers
 {
-    public class BoardsController : Controller
+    public class BoardsController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private Guid CurrentUserId;
-        private ApplicationUser CurrentUser;
-
-
         public BoardsController()
         {
-
             CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
             CurrentUser = CurrentUserId != Guid.Empty ? db.Users.First(x => x.Id == CurrentUserId) : null;
         }
-
-        public Guid GetCurrentUserId()
-        {
-            var toReturn = User != null ? new Guid(User.Identity.GetUserId() == null ? Guid.Empty.ToString() : User.Identity.GetUserId().ToString()) : Guid.Empty;
-            return toReturn;
-        }
-
-        public void SetCurrentUser()
-        {
-            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId() == null ? Guid.Empty.ToString() : User.Identity.GetUserId().ToString()  ) : Guid.Empty;
-            CurrentUser = CurrentUserId == Guid.Empty ? null : db.Users.First(x => x.Id == CurrentUserId);
-        }
-
-
-
-
 
         // GET: Boards
         [Authorize(Roles ="Admin, LeloUser")]
@@ -52,7 +30,7 @@ namespace Lelo.Controllers
 
 
             //Jeżeli nie Admin - filtruj po user    
-            if (!User.IsInRole("Admin"))
+            if (User.IsInRole("LeloUser"))
             {
                 var uid = GetCurrentUserId();
                 boards = boards.Where(x => x.UserId == uid || x.Team.Users.Select(xx=> xx.Id).Contains(CurrentUserId));
@@ -97,6 +75,16 @@ namespace Lelo.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (board.UserId == Guid.Empty)
+                {
+                    board.UserId = GetCurrentUserId();
+                }
+
+                if (User.IsInRole("LeloUser"))
+                {
+                    //todo dodać domyślny team !!
+                }
+
                 db.Boards.Add(board);
                 db.SaveChanges();
                 return RedirectToAction("Index");
