@@ -5,23 +5,25 @@
 }
 
 <style>
-#sortable1, #sortable2 {
-    border: 1px solid #eee;
-    width: 142px;
-    min-height: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 5px 0 0 0;
-    float: left;
-    margin-right: 10px;
-  }
-  #sortable1 li, #sortable2 li {
-    margin: 0 5px 5px 5px;
-    padding: 5px;
-    font-size: 1.2em;
-    width: 120px;
-  }
-  </style>
+    .sortable {
+        border: 1px solid #eee;
+        width: 100%;
+        min-height: 20px;
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 0 0 0;
+        float: left;
+        margin-right: 10px;
+    }
+
+        .sortable li {
+            margin: 0 5px 5px 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            width: 100%;
+                background: aquamarine;
+        }
+</style>
 
 
 
@@ -64,35 +66,36 @@
         </dd>
     </dl>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="width:auto">
         <thead>
             <tr>
-                <th>Nazwa listy</th>
-                <th>Zadania</th>
+                @foreach (var task in Model.TaskLists)
+                {
+                    <th style="width:150px">@task.Name</th>
+                }
             </tr>
         </thead>
         @{
             int i = 1;
 
-            foreach (var item in Model.TaskLists)
-            {
-                <tr>
-
-                    <td> @item.Name </td>
-
-                    <td>
-
-                        <ul class="connectedSortable" id="@("sortable" + i)">
-                            @foreach (var item2 in item.LeloTasks)
-                            {
-                                <li>@Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item.Id }, null) </li>
-                            }
-                        </ul>
-
-                    </td>
-                </tr>
-                i++;
-            }
+            <tr>
+                @foreach (var item in Model.TaskLists)
+                {
+                        <td >
+                            <ul class="connectedSortable sortable" listId="@item.Id">
+                                @foreach (var item2 in item.LeloTasks)
+                                {
+                                    <li taskId="@item2.Id" >@Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, null)
+                                <br />
+                                @item2.Description <br />
+                                
+                                 </li>
+                                }
+                            </ul>
+                        </td>
+                    i++;
+                }
+            </tr>
         }
     </table>
 </div>
@@ -108,9 +111,23 @@
             console.log("ready!");
 
             $(function () {
-                $("#sortable1, #sortable2").sortable({
-                    connectWith: ".connectedSortable"
-                }).disableSelection();
+                $(".connectedSortable").sortable({
+                    connectWith: ".connectedSortable",
+                    update: function (item, ui) {
+                        var listId = $(this).attr('listId');
+                        var taskId = ui.item.attr('taskId');
+
+                        //ajax z taskId - do nowej listy przypisać
+                        //todo pobrać z listy, pary taskId + pozycja
+                        //zrobić akcję ajax która zrobi update pozycji
+                        
+                        //console.log("taskId: " + taskId);
+                        //console.log("Update: " + listId);
+                        console.log("lista list: " + listId);
+                        console.log("idek tasku: " + taskId);
+
+                    }
+                }).disableSelection()
             });
         });
     </script>
