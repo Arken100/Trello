@@ -9,6 +9,7 @@ namespace Lelo.Models
         public string Name { get; set; }
         [Display(Name = "Opis")]
         public string Description { get; set; }
+        public int? Position { get; set; }
 
 
 

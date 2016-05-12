@@ -302,6 +302,7 @@
     <Content Include="Views\TaskLists\Details.cshtml" />
     <Content Include="Views\TaskLists\Edit.cshtml" />
     <Content Include="Views\TaskLists\Index.cshtml" />
+    <Content Include="Views\LeloTasks\AddTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

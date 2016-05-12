@@ -44,6 +44,22 @@ namespace Lelo.Controllers
             return View();
         }
 
+        public ActionResult AddTask(int listId)
+        {
+            ViewBag.TaskListId = listId;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddTask(LeloTask leloTask)
+        {
+            Create(leloTask);
+            int boardId = db.Boards.Where(x => x.TaskLists.Select(xx => xx.Id).ToList().Contains(leloTask.TaskListId.Value)).FirstOrDefault().Id;
+
+            return RedirectToAction("Details","Boards", new {Id = boardId});
+        }
+
+
         // POST: LeloTasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,6 +109,34 @@ namespace Lelo.Controllers
             }
             ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
             return View(leloTask);
+        }
+
+        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        public ActionResult UpdateList(int taskId, int listId, string[] order)
+        {
+
+            LeloTask leloTask = db.LeloTasks.Where(x => x.Id == taskId).FirstOrDefault();
+            leloTask.TaskListId = listId;
+            db.Entry(leloTask).State = EntityState.Modified;
+            db.SaveChanges();
+
+
+            if (order != null)
+            {
+                for (int i = 0; i < order.Length; i++)
+                {
+                    int currentTaskId = int.Parse(order[i]);
+                    var task = db.LeloTasks.Where(x => x.Id == currentTaskId).FirstOrDefault(); ;
+                    task.Position = i;
+                    db.Entry(task).State = EntityState.Modified;
+                }
+                db.SaveChanges();
+            }
+
+
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         // GET: LeloTasks/Delete/5

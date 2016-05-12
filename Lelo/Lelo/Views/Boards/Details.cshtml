@@ -5,6 +5,15 @@
 }
 
 <style>
+    .sortable li {
+        margin: 3px 0px 10px 10px;
+        padding: 5px;
+        font-size: 1.2em;
+        width: 165px;
+        background: aquamarine;
+        border-radius: 8px;
+    }
+
     .sortable {
         border: 1px solid #eee;
         width: 100%;
@@ -14,15 +23,12 @@
         padding: 5px 0 0 0;
         float: left;
         margin-right: 10px;
+        border-radius: 8px;
     }
 
-        .sortable li {
-            margin: 0 5px 5px 5px;
-            padding: 5px;
-            font-size: 1.2em;
-            width: 100%;
-                background: aquamarine;
-        }
+    .tableColumn {
+        width: 200px;
+    }
 </style>
 
 
@@ -71,28 +77,30 @@
             <tr>
                 @foreach (var task in Model.TaskLists)
                 {
-                    <th style="width:150px">@task.Name</th>
+                    <th class="tableColumn">@task.Name</th>
                 }
             </tr>
         </thead>
         @{
             int i = 1;
 
-            <tr>
+            <tr id="listRow">
                 @foreach (var item in Model.TaskLists)
                 {
-                        <td >
-                            <ul class="connectedSortable sortable" listId="@item.Id">
-                                @foreach (var item2 in item.LeloTasks)
-                                {
-                                    <li taskId="@item2.Id" >@Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, null)
-                                <br />
-                                @item2.Description <br />
-                                
-                                 </li>
-                                }
-                            </ul>
-                        </td>
+                    <td>
+                        <ul class="connectedSortable sortable" listId="@item.Id">
+                            @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
+                            {
+                                <li taskId="@item2.Id">
+                                    @Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, null)
+                                    <br />
+                                    @item2.Description <br />
+
+                                </li>
+                            }
+                        </ul>
+                        @Html.ActionLink("+", "AddTask", "LeloTasks", new { listId = item.Id },  new { @class="btn-default btn", @style="width:100%; margin-top:10px" } )
+                    </td>
                     i++;
                 }
             </tr>
@@ -116,15 +124,26 @@
                     update: function (item, ui) {
                         var listId = $(this).attr('listId');
                         var taskId = ui.item.attr('taskId');
+                        var order = [];
 
-                        //ajax z taskId - do nowej listy przypisać
-                        //todo pobrać z listy, pary taskId + pozycja
-                        //zrobić akcję ajax która zrobi update pozycji
-                        
-                        //console.log("taskId: " + taskId);
-                        //console.log("Update: " + listId);
-                        console.log("lista list: " + listId);
-                        console.log("idek tasku: " + taskId);
+                        $('#listRow ul[listId="' + listId + '"] li').each(function () {
+                            order.push($(this).attr('taskId'))
+                        })
+
+                       
+                        $.ajax({
+                            method: "POST",
+                            url: "/LeloTasks/UpdateList",
+                            data: {
+                                taskId: taskId,
+                                listId: listId,
+                                order: order
+                            }
+                        })
+                          .done(function (msg) {
+                              //alert("Data Saved: " + msg);
+                          });
+
 
                     }
                 }).disableSelection()
