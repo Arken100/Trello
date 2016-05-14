@@ -16,8 +16,8 @@ namespace Lelo.Controllers
     {
         public BoardsController()
         {
-            CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
-            CurrentUser = CurrentUserId != Guid.Empty ? db.Users.First(x => x.Id == CurrentUserId) : null;
+            //CurrentUserId = User != null ? new Guid(User.Identity.GetUserId()) : Guid.Empty;
+            //CurrentUser = CurrentUserId != Guid.Empty ? db.Users.First(x => x.Id == CurrentUserId) : null;
         }
 
         // GET: Boards
@@ -82,7 +82,16 @@ namespace Lelo.Controllers
 
                 if (User.IsInRole("LeloUser"))
                 {
-                    //todo dodać domyślny team !!
+                    SetCurrentUser();
+
+                    Team team = new Team()
+                    {
+                        Name = board.Title.Replace(" ", "") + " - " +   CurrentUser.UserName,
+                        OwnerId = CurrentUserId
+                        
+                    };
+
+                    board.Team = team;
                 }
 
                 db.Boards.Add(board);
