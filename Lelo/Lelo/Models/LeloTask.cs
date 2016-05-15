@@ -15,7 +15,7 @@ namespace Lelo.Models
 
         public int? TaskListId { get; set; }
 
-
+        [Display(Name="Lista")]
         public TaskList TaskList { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

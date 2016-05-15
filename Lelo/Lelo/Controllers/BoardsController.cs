@@ -26,7 +26,7 @@ namespace Lelo.Controllers
         {
             SetCurrentUser();
 
-            var boards = db.Boards.Include(b => b.Team).Include(b => b.User);
+            var boards = db.Boards.Include(b => b.Team).Include(b => b.User).Where(x=> !x.IsDeleted);
 
 
             //Jeżeli nie Admin - filtruj po user    
@@ -49,6 +49,15 @@ namespace Lelo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Board board = db.Boards.Find(id);
+            board.TaskLists = board.TaskLists.Where(x => !x.IsDeleted).ToList();
+            List<TaskList> listNotDeleted = new List<TaskList>();
+            foreach (TaskList taskLists in board.TaskLists)
+            {
+                taskLists.LeloTasks = taskLists.LeloTasks.Where(x => !x.IsDeleted).ToList();
+                listNotDeleted.Add(taskLists);
+            }
+            board.TaskLists = listNotDeleted;
+
             if (board == null)
             {
                 return HttpNotFound();
@@ -164,24 +173,39 @@ namespace Lelo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Board board = db.Boards.Find(id);
-            db.Boards.Remove(board);
+
+            foreach(TaskList taskList in board.TaskLists)
+            {
+                foreach (LeloTask task in taskList.LeloTasks)
+                {
+                    task.IsDeleted = true;
+                    db.Entry(task).State = EntityState.Modified;
+                }
+                taskList.IsDeleted = true;
+                db.Entry(taskList).State = EntityState.Modified;
+            }
+
+            //db.Boards.Remove(board);
+            board.IsDeleted = true;
+            db.Entry(board).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
 
-        public ActionResult EditTask(int? id)
+        public ActionResult EditTask(int? id, int boardId)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             LeloTask leloTask = db.LeloTasks.Find(id);
+
             if (leloTask == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
+            ViewBag.TaskListId = new SelectList(db.TaskLists.Where(x=>x.BoardId == boardId && !x.IsDeleted) , "Id", "Name", leloTask.TaskListId);
 
             ViewBag.BoardId = db.TaskLists.Find(leloTask.TaskListId).BoardId.Value;
 

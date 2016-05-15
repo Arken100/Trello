@@ -18,7 +18,7 @@ namespace Lelo.Controllers
         // GET: Teams
         public ActionResult Index()
         {
-            var toReturn = db.Teams == null ? null : db.Teams.ToList();
+            var toReturn = db.Teams == null ? null : db.Teams.Where(x=>x.IsDeleted != false).ToList();
 
             return View(toReturn);
         }
@@ -113,7 +113,9 @@ namespace Lelo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Team team = db.Teams.Find(id);
-            db.Teams.Remove(team);
+            //db.Teams.Remove(team);
+            team.IsDeleted = true;
+            db.Entry(team).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

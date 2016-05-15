@@ -33,6 +33,8 @@
             </div>
         </div>
 
+        @if(User.IsInRole("Admin"))
+        {
         <div class="form-group">
             @Html.LabelFor(model => model.TaskListId, "TaskListId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -40,6 +42,13 @@
                 @Html.ValidationMessageFor(model => model.TaskListId, "", new { @class = "text-danger" })
             </div>
         </div>
+        }
+        else
+        {
+            @Html.Hidden("TaskListId", (object)Model.TaskListId)
+        }
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -50,7 +59,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy", "Index")
 </div>
 
 @section Scripts {

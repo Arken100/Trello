@@ -63,46 +63,71 @@
     <h3>@Model.Title</h3>
     <hr />
     @*<dl class="dl-horizontal">
-        <dt>
-                @Html.DisplayNameFor(model => model.Team.Name)
+            <dt>
+                    @Html.DisplayNameFor(model => model.Team.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Team.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Email)
+                </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Team.Name)
+                @Html.DisplayFor(model => model.Title)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.User.Email)
+                @Html.DisplayNameFor(model => model.Description)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.User.Email)
+                @Html.DisplayFor(model => model.Description)
             </dd>
+        </dl>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>*@
 
     <table class="tableRound " style="width:auto">
         <thead>
             <tr>
-                @foreach (var task in Model.TaskLists)
+                @foreach (var taskList in Model.TaskLists)
                 {
-                    <th class="tableColumn">@task.Name</th>
+                    <th class="tableColumn">
+                        @taskList.Name
+                        <a href="@Url.Action("EditList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
+                            <span class="glyphicon glyphicon-pencil" style="float:right"></span>
+                        </a>
+                        <a href="@Url.Action("DeleteList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
+                            <span class="glyphicon glyphicon-remove" style="float:right"></span>
+                        </a>
+
+                    </th>
                 }
+                <th>
+                    @if (Model.TaskLists == null || Model.TaskLists.Count == 0)
+                    {
+                        <a href="@Url.Action("AddList", "TaskLists",  new { boardId = Model.Id })" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-plus" >Dodaj listę</span>
+                        </a>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Dodaj listę", "AddList", "TaskLists", new { boardId = Model.Id }, null)
+                    }
+
+                </th>
             </tr>
         </thead>
         @{
@@ -119,8 +144,11 @@
                                 <li taskId="@item2.Id">
                                     @Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, new { @class = "taskTittle" })
 
-                                    <a href="@Url.Action("EditTask", "Boards", new { Id = item2.Id })" class ="taskTittle">
+                                    <a href="@Url.Action("EditTask", "Boards", new { Id = item2.Id, BoardId = Model.Id })" class="taskTittle">
                                         <span class="glyphicon glyphicon-pencil" style="float:right"></span>
+                                    </a>
+                                    <a href="@Url.Action("DeleteTask", "LeloTasks", new { Id = item2.Id, BoardId = Model.Id })" class="taskTittle">
+                                        <span class="glyphicon glyphicon-remove" style="float:right"></span>
                                     </a>
 
                                     <br />
@@ -131,17 +159,18 @@
                                 </li>
                             }
                         </ul>
-                        @Html.ActionLink("Dodaj kartę...", "AddTask", "LeloTasks", new { listId = item.Id }, new { @class = "btn-default btn", @style = "width:100%; margin-top:10px" })
+                        @Html.ActionLink("Dodaj kartę...", "AddTask", "LeloTasks", new { listId = item.Id, boardId = Model.Id }, new { @class = "btn-default btn", @style = "width:100%; margin-top:10px" })
                     </td>
                     i++;
                 }
+                <td></td>
             </tr>
         }
     </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy", "Index")
 </p>
 
 

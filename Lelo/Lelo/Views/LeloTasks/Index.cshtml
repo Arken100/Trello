@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TaskList.Name)
+            Tablica / Lista
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TaskList.Name)
+            @item.TaskList.Board.Title <strong>/</strong> @item.TaskList.Name
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

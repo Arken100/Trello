@@ -11,14 +11,18 @@ using Lelo.Models;
 
 namespace Lelo.Controllers
 {
-    public class TaskListsController : Controller
+    public class TaskListsController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: TaskLists
         public ActionResult Index()
         {
-            var taskLists = db.TaskLists.Include(t => t.Board);
+            var uid = GetCurrentUserId();
+
+            var taskLists = db.TaskLists.Where(x => !x.IsDeleted).Include(t => t.Board)
+                .Where(x => x.Board.UserId == uid || x.Board.Team.Users.Select(xx => xx.Id).Contains(CurrentUserId))                
+                .ToList();
             return View(taskLists.ToList());
         }
 
@@ -43,6 +47,29 @@ namespace Lelo.Controllers
             ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title");
             return View();
         }
+
+        public ActionResult AddList(int boardId)
+        {
+            ViewBag.BoardId = boardId;
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddList([Bind(Include = "Id,Name,Description,BoardId")] TaskList taskList)
+        {
+            if (ModelState.IsValid)
+            {
+                db.TaskLists.Add(taskList);
+                db.SaveChanges();
+                return RedirectToAction("Details", "Boards", new { Id = taskList.BoardId });
+            }
+
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title", taskList.BoardId);
+            return View(taskList);
+        }
+
 
         // POST: TaskLists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -95,6 +122,41 @@ namespace Lelo.Controllers
             return View(taskList);
         }
 
+        public ActionResult EditList(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaskList taskList = db.TaskLists.Find(id);
+            if (taskList == null)
+            {
+                return HttpNotFound();
+            }
+            var uid = GetCurrentUserId();
+            ViewBag.BoardId = new SelectList(db.Boards
+                .Where(x=> !x.IsDeleted), "Id", "Title", taskList.BoardId);
+            return View(taskList);
+        }
+
+        // POST: TaskLists/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditList([Bind(Include = "Id,Name,Description,BoardId")] TaskList taskList)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(taskList).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Details", "Boards", new { Id = taskList.BoardId });
+            }
+            ViewBag.BoardId = new SelectList(db.Boards, "Id", "Title", taskList.BoardId);
+            return View(taskList);
+        }
+
+
         // GET: TaskLists/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,9 +178,48 @@ namespace Lelo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             TaskList taskList = db.TaskLists.Find(id);
-            db.TaskLists.Remove(taskList);
+            //db.TaskLists.Remove(taskList);
+            taskList.IsDeleted = true;
+            db.Entry(taskList).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteList(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaskList taskList = db.TaskLists.Find(id);
+            if (taskList == null)
+            {
+                return HttpNotFound();
+            }
+            return View(taskList);
+        }
+
+        // POST: TaskLists/Delete/5
+        [HttpPost, ActionName("DeleteList")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteListConfirmed(int id)
+        {
+            TaskList taskList = db.TaskLists.Find(id);
+            //db.TaskLists.Remove(taskList);
+
+            foreach (LeloTask task in taskList.LeloTasks)
+            {
+                task.IsDeleted = true;
+                db.Entry(task).State = EntityState.Modified;
+            }
+            taskList.IsDeleted = true;
+            db.Entry(taskList).State = EntityState.Modified;
+
+
+            taskList.IsDeleted = true;
+            db.Entry(taskList).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Details", "Boards", new { Id = taskList.BoardId });
         }
 
         protected override void Dispose(bool disposing)

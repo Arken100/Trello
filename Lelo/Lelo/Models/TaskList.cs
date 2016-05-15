@@ -1,6 +1,7 @@
 ﻿using Lelo.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
@@ -11,7 +12,10 @@ namespace Lelo.Models
 {
     public class TaskList : Base
     {
+        [Display(Name="Nazwa listy")]
         public string Name { get; set; }
+
+        [Display(Name = "Opis")]
         public string Description { get; set; }
 
         [ForeignKey("Board")]

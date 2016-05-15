@@ -11,14 +11,17 @@ using Lelo.Models;
 
 namespace Lelo.Controllers
 {
-    public class LeloTasksController : Controller
+    public class LeloTasksController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: LeloTasks
         public ActionResult Index()
         {
-            var leloTasks = db.LeloTasks.Include(l => l.TaskList);
+            var uid = GetCurrentUserId();
+            var leloTasks = db.LeloTasks.Include(l => l.TaskList).Include(l => l.TaskList.Board).Where(x => !x.IsDeleted)
+             .Where(x => x.TaskList.Board.UserId == uid || x.TaskList.Board.Team.Users.Select(xx => xx.Id).Contains(CurrentUserId));
+
             return View(leloTasks.ToList());
         }
 
@@ -47,9 +50,11 @@ namespace Lelo.Controllers
             return View();
         }
 
-        public ActionResult AddTask(int listId)
+        public ActionResult AddTask(int listId, int boardId)
         {
             ViewBag.TaskListId = listId;
+            ViewBag.BoardId = boardId;
+
             return View();
         }
 
@@ -163,10 +168,45 @@ namespace Lelo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             LeloTask leloTask = db.LeloTasks.Find(id);
-            db.LeloTasks.Remove(leloTask);
+            //db.LeloTasks.Remove(leloTask);
+            leloTask.IsDeleted = true;
+            db.Entry(leloTask).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteTask(int? id, int boardId)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            if (leloTask == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.BoardId = boardId;
+
+            return View(leloTask);
+        }
+
+        // POST: LeloTasks/Delete/5
+        [HttpPost, ActionName("DeleteTask")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteTaskConfirmed(int id)
+        {
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            //db.LeloTasks.Remove(leloTask);
+            leloTask.IsDeleted = true;
+            db.Entry(leloTask).State = EntityState.Modified;
+            db.SaveChanges();
+
+            int boardId = db.Boards.Where(x => x.TaskLists.Select(xx => xx.Id).ToList().Contains(leloTask.TaskListId.Value)).FirstOrDefault().Id;
+            return RedirectToAction("Details", "Boards", new { Id = boardId });
+        }
+
 
         protected override void Dispose(bool disposing)
         {
