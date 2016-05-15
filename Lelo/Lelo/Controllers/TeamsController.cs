@@ -11,14 +11,16 @@ using Lelo.Models;
 
 namespace Lelo.Controllers
 {
-    public class TeamsController : Controller
+    public class TeamsController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Teams
         public ActionResult Index()
         {
-            var toReturn = db.Teams == null ? null : db.Teams.Where(x=>x.IsDeleted != false).ToList();
+            var uid = GetCurrentUserId();
+            var toReturn = db.Teams == null ? null : db.Teams.Where(x=> !x.IsDeleted)
+                .Where(x => x.OwnerId == uid).ToList();
 
             return View(toReturn);
         }
