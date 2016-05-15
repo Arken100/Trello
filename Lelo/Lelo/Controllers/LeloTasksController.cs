@@ -34,6 +34,9 @@ namespace Lelo.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.BoardId = db.TaskLists.Find(leloTask.TaskListId).BoardId.Value;
+
             return View(leloTask);
         }
 

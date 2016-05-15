@@ -5,11 +5,20 @@
 }
 
 <style>
+    body {
+        font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    .taskTittle {
+        color: black;
+        font-weight: bold;
+    }
+
     .sortable li {
-        margin: 3px 0px 10px 10px;
+        margin: 8px;
         padding: 5px;
         font-size: 1.2em;
-        width: 165px;
+        /*width: 165px;*/
         background: aquamarine;
         border-radius: 8px;
     }
@@ -29,31 +38,46 @@
     .tableColumn {
         width: 200px;
     }
+
+    .tableRound td {
+        vertical-align: top;
+        width: 220px;
+    }
+
+    .tableRound {
+        border-collapse: separate;
+        border-spacing: 8px;
+    }
+
+        .tableRound th {
+            /*background: #eee;*/
+            border-radius: 10px 10px 0px 0px;
+        }
+
+    .description {
+        font-size: 11px;
+    }
 </style>
 
-
-
-<h2>Details</h2>
-
 <div>
-    <h4>Board</h4>
+    <h3>@Model.Title</h3>
     <hr />
-    <dl class="dl-horizontal">
+    @*<dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Team.Name)
-        </dt>
+                @Html.DisplayNameFor(model => model.Team.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Team.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Team.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -70,9 +94,9 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-    </dl>
+    </dl>*@
 
-    <table class="table table-bordered" style="width:auto">
+    <table class="tableRound " style="width:auto">
         <thead>
             <tr>
                 @foreach (var task in Model.TaskLists)
@@ -88,21 +112,26 @@
                 @foreach (var item in Model.TaskLists)
                 {
                     <td>
-                        <div class="container">
 
-                            <ul class="connectedSortable sortable" listId="@item.Id">
-                                @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
-                                {
-                                    <li taskId="@item2.Id">
-                                        @Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, null)
-                                        <br />
+                        <ul class="connectedSortable sortable" listId="@item.Id">
+                            @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
+                            {
+                                <li taskId="@item2.Id">
+                                    @Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, new { @class = "taskTittle" })
+
+                                    <a href="@Url.Action("EditTask", "Boards", new { Id = item2.Id })" class ="taskTittle">
+                                        <span class="glyphicon glyphicon-pencil" style="float:right"></span>
+                                    </a>
+
+                                    <br />
+                                    <span class="description">
                                         @item2.Description <br />
+                                    </span>
 
-                                    </li>
-                                }
-                            </ul>
-                            @Html.ActionLink("+", "AddTask", "LeloTasks", new { listId = item.Id }, new { @class = "btn-default btn", @style = "width:100%; margin-top:10px" })
-                        </div>
+                                </li>
+                            }
+                        </ul>
+                        @Html.ActionLink("Dodaj kartę...", "AddTask", "LeloTasks", new { listId = item.Id }, new { @class = "btn-default btn", @style = "width:100%; margin-top:10px" })
                     </td>
                     i++;
                 }

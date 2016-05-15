@@ -20,7 +20,7 @@ namespace Lelo.Models
         [ForeignKey("Team")]
         public int? TeamId { get; set; }
 
-
+        [Display(Name ="Team")]
         public Team Team { get; set; }
 
         [Display(Name = "Właściciel")]

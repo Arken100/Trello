@@ -169,6 +169,48 @@ namespace Lelo.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult EditTask(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            LeloTask leloTask = db.LeloTasks.Find(id);
+            if (leloTask == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.TaskListId = new SelectList(db.TaskLists, "Id", "Name", leloTask.TaskListId);
+
+            ViewBag.BoardId = db.TaskLists.Find(leloTask.TaskListId).BoardId.Value;
+
+
+            return View(leloTask);
+        }
+
+        // POST: LeloTasks/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTask([Bind(Include = "Id,Name,Description,TaskListId")] LeloTask leloTask)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(leloTask).State = EntityState.Modified;
+                db.SaveChanges();
+
+                int boardId = db.TaskLists.Where(x => x.Id == leloTask.TaskListId).FirstOrDefault().BoardId.Value;
+
+                Board board = db.Boards.Where(x => x.Id == boardId).FirstOrDefault();
+                return RedirectToAction("Details", new { Id = board.Id });
+
+            }
+
+            return View("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
