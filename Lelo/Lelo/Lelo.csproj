@@ -234,7 +234,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dragtable-2.0.12\.gitignore" />
+    <Content Include="Scripts\dragtable-2.0.12\dragtable.jquery.json" />
+    <Content Include="Scripts\dragtable-2.0.12\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dragtable-2.0.12\dragtable.css" />
+    <Content Include="Scripts\dragtable-2.0.12\index.html" />
+    <Content Include="Scripts\dragtable-2.0.12\jquery.dragtable.js" />
+    <Content Include="Scripts\dragtable-2.0.12\LICENSE.txt" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

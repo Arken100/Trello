@@ -273,3 +273,4 @@ C:\Projects\Lelo\Lelo\Lelo\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Projects\Lelo\Lelo\Lelo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Projects\Lelo\Lelo\Lelo\obj\Debug\Lelo.dll
 C:\Projects\Lelo\Lelo\Lelo\obj\Debug\Lelo.pdb
+C:\Projects\Lelo\Lelo\Lelo\obj\Debug\Lelo.csprojResolveAssemblyReference.cache

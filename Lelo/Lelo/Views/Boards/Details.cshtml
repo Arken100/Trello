@@ -62,49 +62,12 @@
 <div>
     <h3>@Model.Title</h3>
     <hr />
-    @*<dl class="dl-horizontal">
-            <dt>
-                    @Html.DisplayNameFor(model => model.Team.Name)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Team.Name)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.User.Email)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.User.Email)
-                </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>*@
-
-
-
-
-    <table class="tableRound " style="width:auto">
+    <table class="tableRound draggable" id="boardTable" style="width:auto">
         <thead>
             <tr>
                 @foreach (var taskList in Model.TaskLists)
                 {
-                    <th class="tableColumn">
+                    <th class="tableColumn accept" >
                         @taskList.Name
                         <a href="@Url.Action("EditList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
                             <span class="glyphicon glyphicon-pencil" style="float:right"></span>
@@ -115,11 +78,11 @@
 
                     </th>
                 }
-                <th>
+                <th class="notdraggable">
                     @if (Model.TaskLists == null || Model.TaskLists.Count == 0)
                     {
                         <a href="@Url.Action("AddList", "TaskLists",  new { boardId = Model.Id })" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-plus" >Dodaj listę</span>
+                            <span class="glyphicon glyphicon-plus">Dodaj listę</span>
                         </a>
                     }
                     else
@@ -136,7 +99,7 @@
             <tr id="listRow">
                 @foreach (var item in Model.TaskLists)
                 {
-                    <td>
+                    <td class="">
 
                         <ul class="connectedSortable sortable" listId="@item.Id">
                             @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
@@ -179,6 +142,7 @@
         $(document).ready(function () {
             console.log("ready!");
 
+
             $(function () {
                 $(".connectedSortable").sortable({
                     connectWith: ".connectedSortable",
@@ -209,6 +173,23 @@
                     }
                 }).disableSelection()
             });
+
+            var drag = $('#boardTable').dragtable({
+                persistState: function (table) {
+                    console.log("fsdfsd")
+                },
+                maxMovingRows:1,
+                placeholder: 'dragtable-col-placeholder test3',
+                dragaccept:'.accept',
+                //items: 'thead th:not( .notdraggable ):not(:has( .dragtable-drag-handle ) ), .dragtable-drag-handle',
+                //appendTarget: $(this).parent(),
+                //scroll: true
+            });
+
+            drag.on('#boardTable', function () {
+                console.log("Success")
+            })
+
         });
     </script>
 }
