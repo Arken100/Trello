@@ -23,6 +23,9 @@ namespace Lelo.Models
 
         public Board Board { get; set; }
 
+        public int? Position { get; set; }
+
+
         public virtual ICollection<LeloTask> LeloTasks { get; set; }
 
       

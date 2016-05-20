@@ -222,6 +222,27 @@ namespace Lelo.Controllers
             return RedirectToAction("Details", "Boards", new { Id = taskList.BoardId });
         }
 
+        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        public ActionResult UpdateListOrder(int boardId, string[] order)
+        {
+            if (order != null)
+            {
+                for (int i = 0; i < order.Length; i++)
+                {
+                    int currentListId = int.Parse(order[i]);
+                    TaskList list = db.TaskLists.Where(x => x.Id == currentListId).FirstOrDefault(); ;
+                    list.Position = i;
+                    db.Entry(list).State = EntityState.Modified;
+                }
+                db.SaveChanges();
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

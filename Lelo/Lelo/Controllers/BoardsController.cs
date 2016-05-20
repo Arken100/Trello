@@ -49,11 +49,12 @@ namespace Lelo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Board board = db.Boards.Find(id);
-            board.TaskLists = board.TaskLists.Where(x => !x.IsDeleted).ToList();
+            board.TaskLists = board.TaskLists.Where(x => !x.IsDeleted).OrderBy(x=>x.Position).ToList();
             List<TaskList> listNotDeleted = new List<TaskList>();
+
             foreach (TaskList taskLists in board.TaskLists)
             {
-                taskLists.LeloTasks = taskLists.LeloTasks.Where(x => !x.IsDeleted).ToList();
+                taskLists.LeloTasks = taskLists.LeloTasks.Where(x => !x.IsDeleted).OrderBy(x=>x.Position).ToList();
                 listNotDeleted.Add(taskLists);
             }
             board.TaskLists = listNotDeleted;

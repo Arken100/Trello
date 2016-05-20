@@ -67,7 +67,7 @@
             <tr>
                 @foreach (var taskList in Model.TaskLists)
                 {
-                    <th class="tableColumn accept">
+                    <th class="tableColumn accept" listId="@taskList.Id">
                         <div class="some-handle" style="float:left; width:180px">
                             @taskList.Name
                         </div>
@@ -104,7 +104,6 @@
                 @foreach (var item in Model.TaskLists)
                 {
                     <td class="">
-
                         <ul class="connectedSortable sortable" listId="@item.Id">
                             @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
                             {
@@ -180,9 +179,30 @@
 
             var drag = $('#boardTable').dragtable({
                 persistState: function (table) {
+
+                    var order = [];
+
+                    $('#boardTable th').each(function () {
+                        order.push($(this).attr('listId'))
+                    })
+
+                    order.pop();
+
+                    $.ajax({
+                        method: "POST",
+                        url: "/TaskLists/UpdateListOrder",
+                        data: {
+                            boardId: @Model.Id,
+                            order: order
+                        }
+                    })
+
+
+
+
                     console.log("fsdfsd")
                 },
-                maxMovingRows: 1,
+                //maxMovingRows: 1,
                 placeholder: 'dragtable-col-placeholder test3',
                 dragaccept: '.accept',
                 dragHandle: '.some-handle'
