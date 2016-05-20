@@ -14,16 +14,16 @@
         font-weight: bold;
     }
 
-    .sortable li {
+    .sortable li, .draggable ul li {
         margin: 8px;
         padding: 5px;
         font-size: 1.2em;
-        /*width: 165px;*/
+        width: 195px;
         background: aquamarine;
         border-radius: 8px;
     }
 
-    .sortable {
+    .sortable, .draggable ul {
         border: 1px solid #eee;
         width: 100%;
         min-height: 20px;
@@ -44,18 +44,22 @@
         border-spacing: 8px;
     }
 
-        .tableRound td {
+        .tableRound Td, .draggable tbody td {
             vertical-align: top;
             width: 220px;
         }
 
-        .tableRound th {
+        .tableRound Th {
             /*background: #eee;*/
             border-radius: 10px 10px 0px 0px;
         }
 
     .description {
         font-size: 11px;
+    }
+
+    .glyphicon {
+        position: initial;
     }
 </style>
 

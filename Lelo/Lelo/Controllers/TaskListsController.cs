@@ -61,6 +61,9 @@ namespace Lelo.Controllers
         {
             if (ModelState.IsValid)
             {
+                int? position = db.TaskLists.Where(x => x.BoardId == taskList.BoardId).Max(x => x.Position);
+
+                taskList.Position = position.HasValue ? position.Value + 1 : 0;
                 db.TaskLists.Add(taskList);
                 db.SaveChanges();
                 return RedirectToAction("Details", "Boards", new { Id = taskList.BoardId });
