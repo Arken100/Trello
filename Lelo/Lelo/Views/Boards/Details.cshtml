@@ -67,14 +67,18 @@
             <tr>
                 @foreach (var taskList in Model.TaskLists)
                 {
-                    <th class="tableColumn accept" >
-                        @taskList.Name
-                        <a href="@Url.Action("EditList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
-                            <span class="glyphicon glyphicon-pencil" style="float:right"></span>
-                        </a>
-                        <a href="@Url.Action("DeleteList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
-                            <span class="glyphicon glyphicon-remove" style="float:right"></span>
-                        </a>
+                    <th class="tableColumn accept">
+                        <div class="some-handle" style="float:left; width:180px">
+                            @taskList.Name
+                        </div>
+                        <div style="float:right">
+                            <a href="@Url.Action("EditList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
+                                <span class="glyphicon glyphicon-pencil" style="float:right"></span>
+                            </a>
+                            <a href="@Url.Action("DeleteList", "TaskLists", new { Id = taskList.Id })" class="taskTittle">
+                                <span class="glyphicon glyphicon-remove" style="float:right"></span>
+                            </a>
+                        </div>
 
                     </th>
                 }
@@ -178,9 +182,10 @@
                 persistState: function (table) {
                     console.log("fsdfsd")
                 },
-                maxMovingRows:1,
+                maxMovingRows: 1,
                 placeholder: 'dragtable-col-placeholder test3',
-                dragaccept:'.accept',
+                dragaccept: '.accept',
+                dragHandle: '.some-handle'
                 //items: 'thead th:not( .notdraggable ):not(:has( .dragtable-drag-handle ) ), .dragtable-drag-handle',
                 //appendTarget: $(this).parent(),
                 //scroll: true
@@ -193,3 +198,6 @@
         });
     </script>
 }
+
+@*https://akottr.github.io/dragtable/*@
+
