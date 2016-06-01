@@ -55,6 +55,8 @@ namespace Lelo.Controllers
             foreach (TaskList taskLists in board.TaskLists)
             {
                 taskLists.LeloTasks = taskLists.LeloTasks.Where(x => !x.IsDeleted).OrderBy(x=>x.Position).ToList();
+
+
                 listNotDeleted.Add(taskLists);
             }
             board.TaskLists = listNotDeleted;
@@ -207,6 +209,7 @@ namespace Lelo.Controllers
                 return HttpNotFound();
             }
             ViewBag.TaskListId = new SelectList(db.TaskLists.Where(x=>x.BoardId == boardId && !x.IsDeleted) , "Id", "Name", leloTask.TaskListId);
+            ViewBag.PriorityId = new SelectList(db.Priorities.Where(x => x.Board.Id == boardId && !x.IsDeleted), "Id", "Name", leloTask.PriorityId);
 
             ViewBag.BoardId = db.TaskLists.Find(leloTask.TaskListId).BoardId.Value;
 
@@ -219,7 +222,7 @@ namespace Lelo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditTask([Bind(Include = "Id,Name,Description,TaskListId")] LeloTask leloTask)
+        public ActionResult EditTask(LeloTask leloTask)
         {
             if (ModelState.IsValid)
             {

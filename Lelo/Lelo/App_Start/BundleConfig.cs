@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Lelo
 {
@@ -16,7 +15,6 @@ namespace Lelo
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 //this (DRAGTABLE) must be before jqueryui. it uses widget
                 "~/Scripts/dragtable-2.0.12/jquery.dragtable.js",
@@ -28,6 +26,7 @@ namespace Lelo
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap-colorpicker.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
@@ -37,7 +36,9 @@ namespace Lelo
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                 "~/Scripts/dragtable-2.0.12/dragtable.css",
-              "~/Content/themes/base/jquery.ui.core.css",
+                "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
+
+                "~/Content/themes/base/jquery.ui.core.css",
               "~/Content/themes/base/jquery.ui.resizable.css",
               "~/Content/themes/base/jquery.ui.selectable.css",
               "~/Content/themes/base/jquery.ui.accordion.css",

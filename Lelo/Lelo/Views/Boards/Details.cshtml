@@ -111,7 +111,7 @@
                         <ul class="connectedSortable sortable" listId="@item.Id">
                             @foreach (var item2 in item.LeloTasks.OrderBy(x => x.Position))
                             {
-                                <li taskId="@item2.Id">
+                                <li taskId="@item2.Id" style="background: @(item2.Priority != null ? item2.Priority.Color : "")">
                                     @Html.ActionLink(@item2.Name, "Details", "LeloTasks", new { Id = item2.Id }, new { @class = "taskTittle" })
 
                                     <a href="@Url.Action("EditTask", "Boards", new { Id = item2.Id, BoardId = Model.Id })" class="taskTittle">

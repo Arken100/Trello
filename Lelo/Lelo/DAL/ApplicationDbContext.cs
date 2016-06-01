@@ -31,6 +31,7 @@ namespace Lelo.DAL
         public DbSet<LeloTask> LeloTasks { get; set; }
         public DbSet<TaskList> TaskLists { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Priority> Priorities { get; set; }
 
         //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }

@@ -27,6 +27,7 @@ namespace Lelo.Models
         public ApplicationUser User { get; set; }
 
         public virtual ICollection<TaskList> TaskLists { get; set; }
+        public virtual ICollection<Priority> Priorities { get; set; }
     }
 }
 

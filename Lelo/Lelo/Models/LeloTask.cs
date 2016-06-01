@@ -14,6 +14,9 @@ namespace Lelo.Models
 
 
         public int? TaskListId { get; set; }
+        public int? PriorityId { get; set; }
+
+        public virtual Priority Priority { get; set; }
 
         [Display(Name="Lista")]
         public TaskList TaskList { get; set; }
