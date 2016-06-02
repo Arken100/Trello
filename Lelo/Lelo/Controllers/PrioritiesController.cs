@@ -18,7 +18,7 @@ namespace Lelo.Controllers
         // GET: Priorities
         public ActionResult Index()
         {
-            return View(db.Priorities.ToList());
+            return View(db.Priorities.Include(x=> x.Board).ToList());
         }
 
         [Authorize(Roles = "Admin, LeloUser")]

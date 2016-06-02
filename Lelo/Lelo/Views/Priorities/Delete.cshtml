@@ -23,16 +23,8 @@
             @Html.DisplayNameFor(model => model.Color)
         </dt>
 
-        <dd>
+        <dd  style="background: @(Model.Color)">
             @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
         </dd>
 
     </dl>

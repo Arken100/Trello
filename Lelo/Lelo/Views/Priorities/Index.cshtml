@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tablice", "Index", "Boards")
 </p>
 <table class="table">
     <tr>
@@ -18,8 +18,9 @@
             @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
+            Tablica
         </th>
+
         <th></th>
     </tr>
 
@@ -28,15 +29,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td style="background: @item.Color">
+
             @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
+            @Html.DisplayFor(modelItem => item.Board.Title)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
