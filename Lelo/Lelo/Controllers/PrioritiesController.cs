@@ -18,7 +18,7 @@ namespace Lelo.Controllers
         // GET: Priorities
         public ActionResult Index()
         {
-            return View(db.Priorities.Include(x=> x.Board).ToList());
+            return View(db.Priorities.Include(x => x.Board).ToList());
         }
 
         [Authorize(Roles = "Admin, LeloUser")]
@@ -26,7 +26,7 @@ namespace Lelo.Controllers
         {
 
             ViewBag.boardId = boardId;
-            return View(db.Priorities.Where(p=>p.Board.Id == boardId).ToList());
+            return View(db.Priorities.Where(p => p.Board.Id == boardId).ToList());
 
 
         }
@@ -139,8 +139,13 @@ namespace Lelo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Priority priority = db.Priorities.Find(id);
-            db.Priorities.Remove(priority);
-            db.SaveChanges();
+
+            bool isInUse = db.Priorities.Any(x => x.Board.TaskLists.Any(t => t.LeloTasks.Any()));
+            if (!isInUse)
+            {
+                db.Priorities.Remove(priority);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
